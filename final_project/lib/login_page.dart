@@ -98,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: usernameController,
                       decoration: InputDecoration(
-                        labelText: "Username",
+                        labelText: "Username (username: admin)",
                         hintText: 'Enter the username',
                         filled: true,
                         fillColor: Colors.white.withOpacity(0.7),
@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: passwordController,
                       decoration: InputDecoration(
-                        labelText: "Password",
+                        labelText: "Password (passsword: 1234)",
                         hintText: 'Enter the password',
                         filled: true,
                         fillColor: Colors.white.withOpacity(0.7),
