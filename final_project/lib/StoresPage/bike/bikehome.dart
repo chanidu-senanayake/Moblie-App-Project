@@ -22,7 +22,7 @@ class _HomeState extends State<Bikehome> {
   Stream? EmployeeStream;
 
   getontheload() async {
-    EmployeeStream = await DatabaseMethods().getEmployeeDetails();
+    EmployeeStream = await DatabaseMethods().getBikeDetails();
     setState(() {});
   }
 
@@ -32,7 +32,7 @@ class _HomeState extends State<Bikehome> {
     super.initState();
   }
 
-  Widget allEmployeeDetails() {
+  Widget allBikeDetails() {
     return StreamBuilder(
         stream: EmployeeStream,
         builder: (context, AsyncSnapshot snapshot) {
@@ -73,7 +73,7 @@ class _HomeState extends State<Bikehome> {
                                       locationcontroller.text = ds["Part"];
                                       qtycontroller.text = ds["QTY"];
                                       pricecontroller.text = ds["Price"];
-                                      EditEmployeeDetails(ds["Id"]);
+                                      EditBikeDetails(ds["Id"]);
                                     },
                                     child: Icon(
                                       Icons.edit,
@@ -86,7 +86,7 @@ class _HomeState extends State<Bikehome> {
                                   GestureDetector(
                                     onTap: () async {
                                       await DatabaseMethods()
-                                          .deleteEmployeeDetail(ds["Id"]);
+                                          .deleteBikeDetail(ds["Id"]);
                                     },
                                     child: Icon(
                                       Icons.delete,
@@ -168,14 +168,14 @@ class _HomeState extends State<Bikehome> {
         margin: EdgeInsets.only(left: 10.0, right: 20.0, top: 30.0),
         child: Column(
           children: [
-            Expanded(child: allEmployeeDetails()),
+            Expanded(child: allBikeDetails()),
           ],
         ),
       ),
     );
   }
 
-  Future EditEmployeeDetails(String id) => showDialog(
+  Future EditBikeDetails(String id) => showDialog(
       context: context,
       builder: (context) => AlertDialog(
             content: Container(
@@ -332,7 +332,7 @@ class _HomeState extends State<Bikehome> {
                               "Part": locationcontroller.text,
                             };
                             await DatabaseMethods()
-                                .updateEmployeeDetail(id, updateInfo)
+                                .updateBikeDetail(id, updateInfo)
                                 .then((value) {
                               Navigator.pop(context);
                             });

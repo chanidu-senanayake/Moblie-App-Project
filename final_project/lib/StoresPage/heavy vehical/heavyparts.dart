@@ -158,8 +158,7 @@ class _HeavyParts extends State<HeavyParts> {
                     "Id": Id,
                     "Part": locationcontroller.text,
                   };
-                  await DatabaseMethods3()
-                      .addEmployeeDetails(employeeInfoMap, Id);
+                  await DatabaseMethods3().addHeavyDetails(employeeInfoMap, Id);
                 },
                 child: Text(
                   "Add",

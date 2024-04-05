@@ -159,7 +159,7 @@ class _CusAdd extends State<CusAdd> {
                     "TP": locationcontroller.text,
                   };
                   await DatabaseMethods4()
-                      .addEmployeeDetails(employeeInfoMap, Id);
+                      .addCustomerDetails(employeeInfoMap, Id);
                 },
                 child: Text(
                   "Add",

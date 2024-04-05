@@ -22,7 +22,7 @@ class _CusHome extends State<CusHome> {
   Stream? EmployeeStream;
 
   getontheload() async {
-    EmployeeStream = await DatabaseMethods4().getEmployeeDetails();
+    EmployeeStream = await DatabaseMethods4().getCustomerDetails();
     setState(() {});
   }
 
@@ -32,7 +32,7 @@ class _CusHome extends State<CusHome> {
     super.initState();
   }
 
-  Widget allEmployeeDetails() {
+  Widget allCustomerDetails() {
     return StreamBuilder(
         stream: EmployeeStream,
         builder: (context, AsyncSnapshot snapshot) {
@@ -73,7 +73,7 @@ class _CusHome extends State<CusHome> {
                                       locationcontroller.text = ds["TP"];
                                       qtycontroller.text = ds["Status"];
                                       pricecontroller.text = ds["Payment"];
-                                      EditEmployeeDetails(ds["Id"]);
+                                      EditCustomerDetails(ds["Id"]);
                                     },
                                     child: Icon(
                                       Icons.edit,
@@ -86,7 +86,7 @@ class _CusHome extends State<CusHome> {
                                   GestureDetector(
                                     onTap: () async {
                                       await DatabaseMethods4()
-                                          .deleteEmployeeDetail(ds["Id"]);
+                                          .deleteCustomerDetail(ds["Id"]);
                                     },
                                     child: Icon(
                                       Icons.delete,
@@ -168,14 +168,14 @@ class _CusHome extends State<CusHome> {
         margin: EdgeInsets.only(left: 10.0, right: 20.0, top: 30.0),
         child: Column(
           children: [
-            Expanded(child: allEmployeeDetails()),
+            Expanded(child: allCustomerDetails()),
           ],
         ),
       ),
     );
   }
 
-  Future EditEmployeeDetails(String id) => showDialog(
+  Future EditCustomerDetails(String id) => showDialog(
       context: context,
       builder: (context) => AlertDialog(
             content: Container(
@@ -332,7 +332,7 @@ class _CusHome extends State<CusHome> {
                               "TP": locationcontroller.text,
                             };
                             await DatabaseMethods4()
-                                .updateEmployeeDetail(id, updateInfo)
+                                .updateCustomerDetail(id, updateInfo)
                                 .then((value) {
                               Navigator.pop(context);
                             });

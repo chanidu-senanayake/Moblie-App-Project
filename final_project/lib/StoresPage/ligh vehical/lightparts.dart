@@ -158,8 +158,7 @@ class _LightParts extends State<LightParts> {
                     "Id": Id,
                     "Part": locationcontroller.text,
                   };
-                  await DatabaseMethods2()
-                      .addEmployeeDetails(employeeInfoMap, Id);
+                  await DatabaseMethods2().addLightDetails(employeeInfoMap, Id);
                 },
                 child: Text(
                   "Add",

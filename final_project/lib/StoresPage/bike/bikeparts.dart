@@ -158,8 +158,7 @@ class _BikeParts extends State<BikeParts> {
                     "Id": Id,
                     "Part": locationcontroller.text,
                   };
-                  await DatabaseMethods()
-                      .addEmployeeDetails(employeeInfoMap, Id);
+                  await DatabaseMethods().addBikeDetails(employeeInfoMap, Id);
                 },
                 child: Text(
                   "Add",

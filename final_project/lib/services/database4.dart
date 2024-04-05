@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseMethods4 {
-  Future addEmployeeDetails(
+  Future addCustomerDetails(
       Map<String, dynamic> employeeInfoMap, String id) async {
     return await FirebaseFirestore.instance
         .collection("Customer")
@@ -9,11 +9,11 @@ class DatabaseMethods4 {
         .set(employeeInfoMap);
   }
 
-  Future<Stream<QuerySnapshot>> getEmployeeDetails() async {
+  Future<Stream<QuerySnapshot>> getCustomerDetails() async {
     return await FirebaseFirestore.instance.collection("Customer").snapshots();
   }
 
-  Future updateEmployeeDetail(
+  Future updateCustomerDetail(
       String id, Map<String, dynamic> updateInfo) async {
     return await FirebaseFirestore.instance
         .collection("Customer")
@@ -21,7 +21,7 @@ class DatabaseMethods4 {
         .update(updateInfo);
   }
 
-  Future deleteEmployeeDetail(String id) async {
+  Future deleteCustomerDetail(String id) async {
     return await FirebaseFirestore.instance
         .collection("Customer")
         .doc(id)

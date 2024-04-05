@@ -22,7 +22,7 @@ class _HomeState extends State<LightHome> {
   Stream? EmployeeStream;
 
   getontheload() async {
-    EmployeeStream = await DatabaseMethods2().getEmployeeDetails();
+    EmployeeStream = await DatabaseMethods2().getLightDetails();
     setState(() {});
   }
 
@@ -32,7 +32,7 @@ class _HomeState extends State<LightHome> {
     super.initState();
   }
 
-  Widget allEmployeeDetails() {
+  Widget allLightDetails() {
     return StreamBuilder(
         stream: EmployeeStream,
         builder: (context, AsyncSnapshot snapshot) {
@@ -73,7 +73,7 @@ class _HomeState extends State<LightHome> {
                                       locationcontroller.text = ds["Part"];
                                       qtycontroller.text = ds["QTY"];
                                       pricecontroller.text = ds["Price"];
-                                      EditEmployeeDetails(ds["Id"]);
+                                      EditLightDetails(ds["Id"]);
                                     },
                                     child: Icon(
                                       Icons.edit,
@@ -86,7 +86,7 @@ class _HomeState extends State<LightHome> {
                                   GestureDetector(
                                     onTap: () async {
                                       await DatabaseMethods2()
-                                          .deleteEmployeeDetail(ds["Id"]);
+                                          .deleteLightDetail(ds["Id"]);
                                     },
                                     child: Icon(
                                       Icons.delete,
@@ -168,14 +168,14 @@ class _HomeState extends State<LightHome> {
         margin: EdgeInsets.only(left: 10.0, right: 20.0, top: 30.0),
         child: Column(
           children: [
-            Expanded(child: allEmployeeDetails()),
+            Expanded(child: allLightDetails()),
           ],
         ),
       ),
     );
   }
 
-  Future EditEmployeeDetails(String id) => showDialog(
+  Future EditLightDetails(String id) => showDialog(
       context: context,
       builder: (context) => AlertDialog(
             content: Container(
@@ -332,7 +332,7 @@ class _HomeState extends State<LightHome> {
                               "Part": locationcontroller.text,
                             };
                             await DatabaseMethods2()
-                                .updateEmployeeDetail(id, updateInfo)
+                                .updateLightDetail(id, updateInfo)
                                 .then((value) {
                               Navigator.pop(context);
                             });
